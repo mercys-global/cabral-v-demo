@@ -1707,6 +1707,19 @@ h1,.nih h2,.fshead h2,.sechead h2,.ringhead h2,.stkt h2,.look h2,.lbt p,.htag,.h
 @container site (max-width:1000px){.gwrap{position:static}}
 .lsp .bs{margin-inline:0}@container site (max-width:1000px){.lsp{margin-inline:0}}
 .gmain .galitem:not(.on){display:none}
+/* v21: shop-the-look button right; phone video text inside */
+@container site (max-width:1000px){.lrows + .btn.dark{width:max-content;margin-left:auto;margin-right:auto;justify-self:center;align-self:center}}
+@container site (max-width:760px){
+ .vm::after{display:block;inset:0;background:linear-gradient(to top,rgba(0,0,0,.66),rgba(0,0,0,.18) 55%,transparent 75%)}
+ .vst{position:absolute;left:0;right:0;bottom:16px;padding:0 16px;color:#fff;gap:6px;z-index:2}
+ .vst h2{font-size:26px}
+ .vst p{font-size:12px;max-width:34ch;line-height:1.4}
+ .vst > div,.vst .vbs{gap:8px}
+ .vb{min-height:36px;padding:0 14px;font-size:12px;background:#fff;color:#000;border-color:#fff}
+ .vb:hover{background:#fff;color:#000}
+ .vb.o{background:transparent;color:#fff;border-color:#fff}
+ .vb.o:hover{background:transparent;color:#fff}
+}
 </style>
 
 <div id="app">
