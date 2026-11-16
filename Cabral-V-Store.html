@@ -2539,7 +2539,6 @@ body{color:var(--fg)}
 #site.homep:not(.navsolid) .head{background:transparent!important}
 /* 2. no empty band between the brand moment and Drop 01: the drop rises over the empty lower half of the brand panel */
 .homep .stk.pa{margin-top:0!important;position:relative;z-index:2}
-.homep .hstage{margin-bottom:calc(-50dvh + 120px)}
 .still .homep .hstage,.homep.still .hstage{margin-bottom:0}
 /* 3–4. one type scale: big feature lines share one size, section titles share another */
 .stkt>h2.rh,.vst h2.rh,.bbt h2.rh{font-size:clamp(32px,4.2cqw,66px)!important;letter-spacing:-.015em}
@@ -2558,9 +2557,10 @@ body{color:var(--fg)}
 .socx a:hover{background-size:100% 1px}.socx a:hover i{transform:translate(2px,-2px)}
 .msoc .socx{gap:22px}
 /* phone: the brand panel holds still and Drop 01 slides up over it (curtain), instead of both scrolling away together */
+.homep .hstage{--hx:2;height:calc(240dvh + 120px);margin-bottom:-100dvh}
 .tiny .homep .hstage{--hx:1;height:calc(290dvh - 132px);margin-bottom:calc(-100dvh + 66px)}
-.tiny .homep .hstage~*{position:relative;z-index:2}
-.tiny .homep .hstage~section.ni{background-color:var(--bg);margin-top:0}
+.homep .hstage~*{position:relative;z-index:2}
+.homep .hstage~section.ni{background-color:var(--bg);margin-top:0}
 /* product photos change without a cross-fade: cards slide and dim, never turn see-through */
 .xvi{transition:transform .9s cubic-bezier(.2,.75,.2,1),filter .6s ease!important}
 .xvi[data-d="0"]{z-index:3}
@@ -2607,6 +2607,55 @@ body{color:var(--fg)}
 #help:hover .hcomp{transform:rotate(90deg)}
 .tiny #layer #help.help{width:34px;padding:12px 0 14px;gap:9px;font-size:9.5px}
 .tiny #help .hcomp{width:17px;height:17px}
+
+/* 2) Drop: a touch of brand red */
+.stk.pa .cdown div:last-child b{color:#E23B44}
+.stk.pa .stkgo{border-bottom-color:#E23B44!important;text-decoration-color:#E23B44}
+/* 3) brand band on phone: smaller goat, one clean column */
+.tiny .bband .bbin{display:grid;gap:22px;justify-items:center;text-align:center}
+.tiny .bband .bbgoat{width:92px;height:100px;min-height:0}
+.tiny .bband .bbt{display:grid;justify-items:center}
+.tiny .bband .bbt small{justify-content:center}
+.tiny .bband .bbt h2.rh{font-size:min(24px,6.1vw)!important;line-height:1.1;white-space:nowrap}
+.tiny .bband .bbt p{font-size:14.5px;line-height:1.6;max-width:none}
+.tiny .bband .bbb{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%}
+.tiny .bband .bbb .btn{width:100%;min-height:52px;padding-inline:10px}
+.tiny .bband .wrap{padding-inline:max(24px,env(safe-area-inset-left,0px))}
+/* 4) login on phone: fits one screen, banner shows the model properly */
+.tiny .auth .authart{height:120px;min-height:0}
+.tiny .auth .authart img{object-fit:cover;object-position:50% 22%}
+.tiny .auth .authart>div{transform:scale(.62);transform-origin:left bottom}
+.tiny .auth .authpane{padding-top:14px;padding-bottom:16px;gap:12px}
+.tiny .auth .authtabs{margin-bottom:2px}
+.tiny .auth .authpane h1.rh{font-size:26px}
+.tiny .auth .authpane .muted{font-size:13.5px}
+.tiny .auth .form{gap:10px}
+.tiny .auth .form input{min-height:42px}
+.tiny .auth .forgot{margin-top:-2px}
+.tiny .auth .divider,.tiny .auth .or{margin-block:4px}
+.tiny .auth .socials{margin-top:0}
+/* 6) wishlist hearts turn brand red when saved */
+.heart[aria-pressed=true] svg,.bsh[aria-pressed=true] svg{fill:#E23B44!important;stroke:#E23B44!important;color:#E23B44}
+.xvwish{display:inline-flex;align-items:center;justify-content:center;gap:9px}
+.xvwish svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linejoin:round;transition:fill .2s,stroke .2s,transform .3s cubic-bezier(.2,.8,.2,1)}
+.xvwish[aria-pressed=true] svg{fill:#E23B44;stroke:#E23B44;transform:scale(1.08)}
+/* 7) Drop banner on phone: show the front of the sweatshirt only, centred */
+.tiny .stk.pa>img{object-position:12% 50%}
+/* phone login: tighter so the whole form fits without scrolling */
+.tiny .auth .authart{height:110px}
+.tiny .auth .authpane{padding-top:8px;padding-bottom:10px;gap:10px}
+.tiny .auth .authtabs a{min-height:32px;height:32px}
+.tiny .auth .form{position:relative}
+.tiny .auth .forgot{position:absolute;right:42px;top:75px;margin:0;font-size:13px;line-height:19px}
+.tiny .auth .form .btn,.tiny .auth .socials .btn{min-height:46px;height:46px}
+.tiny .auth .orline{margin-block:-4px;min-height:16px}
+/* wishlist hearts on cards: always a clear light disc; hover turns the heart red, saved fills it red */
+.card .heart,.ni .heart,.heart.bsh{background:rgba(244,241,234,.94)!important;color:#0D0C0B!important;border-radius:50%;transition:opacity .25s ease,transform .2s ease}
+.card .heart svg,.ni .heart svg,.heart.bsh svg{stroke:#0D0C0B;fill:none;transition:stroke .2s,fill .2s}
+.card .heart:hover,.ni .heart:hover,.heart.bsh:hover{transform:scale(1.08)}
+.card .heart:hover svg,.ni .heart:hover svg,.heart.bsh:hover svg{stroke:#E23B44!important}
+/* home: brand red on the small kickers, like the wishlist and bag pages */
+.homep .look small,.homep .look .lk,.homep .axh small{color:#E23B44}
 </style>
 
 <div id="app">
@@ -3520,7 +3569,7 @@ function lookbook(){
   vh=sc.clientHeight;var y=sc.scrollTop,top=sc.getBoundingClientRect().top;
   hero=$('.hstage');
   if(!hero){stks=null;lb=null;mq=null;return;}
-  var hst=$('.hsticky').offsetHeight;heroH=Math.max(1,hero.offsetHeight-hst-(getComputedStyle(hero).getPropertyValue('--hx').trim()==='1'?hst:0));
+  var hst=$('.hsticky').offsetHeight,hx=getComputedStyle(hero).getPropertyValue('--hx').trim();heroH=Math.max(1,hero.offsetHeight-hst-(hx==='1'?hst:hx==='2'?hst/2+120:0));
   hl=$('.hp.l');hr=$('.hp.r');tag=$('.htag');hlogo=$('.hlogo');words=document.querySelectorAll('.hstate h1 span');
   var w=$('#stkwrap');stks=w?w.querySelectorAll('.stk'):null;
   if(w){stkT=w.getBoundingClientRect().top-top+y;stkH=stks[0].offsetHeight;}
@@ -4077,7 +4126,7 @@ function brandBand(){
 /* own icon set for the header, same meanings: a lens with a summit inside, a cut-stone heart, a bag with a brand tag, a person in a collared jacket */
 function hic(n){var d={
  search:'<circle cx="10.4" cy="10.4" r="6.6"/><path d="m7.3 12.4 2.1-2.4 1.5 1.4 1.9-2.1"/><path class="hib" d="m15.4 15.4 5.1 5.1"/>',
- heart:'<path d="M12 20.3 4.2 12.5V8.2L7.4 5h2.3L12 7.3 14.3 5h2.3l3.2 3.2v4.3z"/><path class="hif" d="M12 7.3v13"/>',
+ heart:'<path d="M12 20.3 4.2 12.5V8.2L7.4 5h2.3L12 7.3 14.3 5h2.3l3.2 3.2v4.3z"/>',
  bag:'<path d="M5.1 8.7h13.8l-1.3 12.1H6.4z"/><path d="M8.7 8.7c0-3.7 1.4-5.5 3.3-5.5s3.3 1.8 3.3 5.5"/><path d="m12 12.4 1.5 1.5-1.5 1.5-1.5-1.5z"/>',
  user:'<circle cx="12" cy="7.5" r="3.6"/><path d="M4.4 20.8c.7-4.4 3.5-6.7 7.6-6.7s6.9 2.3 7.6 6.7"/><path d="m9.5 14.5 2.5 2.8 2.5-2.8"/>'
 }[n];return '<svg class="hic hic-'+n+'" viewBox="0 0 24 24" aria-hidden="true">'+d+'</svg>';}
@@ -4221,6 +4270,15 @@ function upAddr(){var a=S.addr.filter(function(x){return x.def;})[0]||S.addr[0];
   if(n===o)return bad('Pick a password different from the current one.','cpNew');
   if(n!==n2)return bad('The two new passwords don\'t match.','cpNew2');
   closeOv();toast('Password changed');},true);
+})();
+
+/* Nov 16: product page wishlist = a heart that simply turns red; no toast, nothing moves */
+(function(){
+ var HP='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.3 4.2 12.5V8.2L7.4 5h2.3L12 7.3 14.3 5h2.3l3.2 3.2v4.3z"/></svg>';
+ function paint(){document.querySelectorAll('.xvbuy button[data-act="wish"],.xvdesc button[data-act="wish"],.xv button.link[data-act="wish"]').forEach(function(b){var on=S.wish.indexOf(b.dataset.id)>-1;b.classList.add('xvwish');b.setAttribute('aria-pressed',on);b.innerHTML=HP+'<span>'+(on?'Saved to wishlist':'Add to wishlist')+'</span>';});}
+ var r0=render;render=function(a){var x=r0.apply(this,arguments);paint();return x;};
+ var t0=toast;toast=function(m){if(/^(Saved to|Removed from) wishlist$/.test(m))return;return t0.apply(this,arguments);};
+ paint();
 })();
 render();
 </script>
