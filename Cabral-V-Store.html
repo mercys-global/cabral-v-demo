@@ -2531,6 +2531,32 @@ body{color:var(--fg)}
 .modal.gsm>.link{justify-self:center;font-size:13px}
 .cphint{font-size:12.5px;margin:-4px 0 0}.cperr{margin:0;color:#e3a197;font-size:13px}
 .modal.cpm .inline{justify-content:flex-end}
+
+/* Nov 16: home polish */
+/* 1. header: solid, no blur over the hero photos */
+.head,#site.homep .head{background:#0D0C0B!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+/* home, at the very top: no bar at all, just the hero; once you scroll it turns solid black */
+#site.homep:not(.navsolid) .head{background:transparent!important}
+/* 2. no empty band between the brand moment and Drop 01: the drop rises over the empty lower half of the brand panel */
+.homep .stk.pa{margin-top:0!important;position:relative;z-index:2}
+.homep .hstage{margin-bottom:calc(-50dvh + 120px)}
+.still .homep .hstage,.homep.still .hstage{margin-bottom:0}
+/* 3–4. one type scale: big feature lines share one size, section titles share another */
+.stkt>h2.rh,.vst h2.rh,.bbt h2.rh{font-size:clamp(32px,4.2cqw,66px)!important;letter-spacing:-.015em}
+.nih h2.rh,.axh h2.rh,.look h2.rh{font-size:clamp(24px,2.35cqw,36px)!important;letter-spacing:-.01em}
+/* header: clear over the hero at the very top of home, black once the page scrolls */
+#site.homep:not(.navsolid) .head{background:transparent!important}
+/* when a menu opens from the header at the top of home, the header turns black with it */
+#site.homep:not(.navsolid) .head:has(#mega,.upop,.pop){background:#0D0C0B!important}
+#site.homep .head{transition:background-color .2s ease,transform .3s ease-in-out}
+/* header turns black whenever a menu panel opens from it, even at the very top of home */
+#site.homep .head:has(#mega),#site.homep .head:has(.pop),#site.homep .head:has(.upop){background:#0D0C0B!important}
+/* footer social links: editorial text links with an out-arrow (reads cleaner than icon circles, sits on the same line as the copyright) */
+.socx{display:inline-flex;align-items:baseline;gap:clamp(18px,2cqw,30px);flex-wrap:wrap}
+.socx a{display:inline-flex;align-items:baseline;gap:5px;font-family:var(--dsp);font-stretch:125%;font-weight:500;font-size:12px;letter-spacing:.04em;color:var(--ink);text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;padding-bottom:3px;transition:background-size .3s ease,color .2s}
+.socx a i{font-style:normal;color:var(--gold);font-size:11px;transition:transform .25s ease}
+.socx a:hover{background-size:100% 1px}.socx a:hover i{transform:translate(2px,-2px)}
+.msoc .socx{gap:22px}
 </style>
 
 <div id="app">
@@ -3268,7 +3294,7 @@ function footer(){
  function col(t,l){return '<div><h3>'+t+'</h3><ul>'+l.map(function(x){return '<li><a href="#'+x[0]+'">'+x[1]+'</a></li>';}).join('')+'</ul></div>';}
  return '<footer class="foot"><div class="wrap ft"><div class="ftbrand"><a class="logo" href="#home" aria-label="Cabral V home">'+LOGO+'</a><p>Get drops, news and offers first.</p><form class="ftnews" data-form="news"><input type="email" id="newsEmail" placeholder="Email address" aria-label="Email address" required><button type="submit">Sign up</button></form></div>'+
  '<div class="ftcols">'+col('Shop',CATS.slice(0,4).map(function(c){return ['shop-'+c[0],c[1]];}))+col('Help',[['help','Help and FAQ'],['shipping','Shipping'],['returns','Returns'],['contact','Contact us']])+col('Company',[['about','About'],['terms','Terms'],['privacy','Privacy']])+'</div></div>'+
- '<div class="wrap"><div class="ftbase"><small>&copy; 2026 Cabral V</small><small class="ftmade">Designed by <a href="https://www.mercystech.com/" target="_blank" rel="noopener">Mercys Global</a></small><small>Instagram &nbsp; YouTube &nbsp; Facebook</small></div></div></footer>';
+ '<div class="wrap"><div class="ftbase"><small>&copy; 2026 Cabral V</small><small class="ftmade">Designed by <a href="https://www.mercystech.com/" target="_blank" rel="noopener">Mercys Global</a></small><span class="socx"><a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Cabral V on Instagram (opens in a new tab)">Instagram<i aria-hidden="true">&#8599;</i></a><a href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="Cabral V on YouTube (opens in a new tab)">YouTube<i aria-hidden="true">&#8599;</i></a><a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Cabral V on Facebook (opens in a new tab)">Facebook<i aria-hidden="true">&#8599;</i></a></span></div></div></footer>';
 }
 (function(){
  var pinned=false,cur=-1,tm=null,prev=render;
@@ -3508,7 +3534,7 @@ function lookbook(){
  document.addEventListener('click',function(e){if(!e.target.closest||!e.target.closest('[data-act=usermenu]'))return;var u=$('.upop');if(!u||u.querySelector('.upreg'))return;u.insertAdjacentHTML('beforeend','<div class="upreg"><span>Region</span>'+Object.keys(REGIONS).map(function(k){return '<button type="button" data-act="setregion" data-v="'+k+'" aria-pressed="'+(k===S.region)+'">'+REGIONS[k].code+'</button>';}).join('')+'</div>');});
  function fhSet(){var f=document.querySelector('.foot'),r=document.documentElement.style;if(f)r.setProperty('--fh',f.offsetHeight+'px');r.setProperty('--sh',sc.clientHeight+'px');document.documentElement.classList.toggle('small',site.clientWidth<=1000);document.documentElement.classList.toggle('tiny',site.clientWidth<=760);}
  document.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('[data-dev]'))[60,350].forEach(function(t){setTimeout(fhSet,t);});});
- document.addEventListener('click',function(e){if(!e.target.closest||!e.target.closest('[data-act=menu]'))return;setTimeout(function(){var m=$('.mscroll');if(!m||m.querySelector('.mextra'))return;var g=m.querySelectorAll('.mgroup');g[g.length-2].insertAdjacentHTML('beforeend','<button type="button" class="mwa" data-act="helpbtn">Chat with us<span aria-hidden="true">&#8250;</span></button>');m.insertAdjacentHTML('beforeend','<div class="mextra"><b>Join the club</b><p>Get drops, news and offers first.</p><form class="ftnews" data-form="news"><input type="email" placeholder="Email address" aria-label="Email address" required><button type="submit">Sign up</button></form><div class="msoc">Instagram &nbsp; YouTube &nbsp; Facebook</div><small>&copy; 2026 Cabral V</small><small>Designed by <a href="https://www.mercystech.com/" target="_blank" rel="noopener">Mercys Global</a></small></div>');},0);});
+ document.addEventListener('click',function(e){if(!e.target.closest||!e.target.closest('[data-act=menu]'))return;setTimeout(function(){var m=$('.mscroll');if(!m||m.querySelector('.mextra'))return;var g=m.querySelectorAll('.mgroup');g[g.length-2].insertAdjacentHTML('beforeend','<button type="button" class="mwa" data-act="helpbtn">Chat with us<span aria-hidden="true">&#8250;</span></button>');m.insertAdjacentHTML('beforeend','<div class="mextra"><b>Join the club</b><p>Get drops, news and offers first.</p><form class="ftnews" data-form="news"><input type="email" placeholder="Email address" aria-label="Email address" required><button type="submit">Sign up</button></form><div class="msoc"><span class="socx"><a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Cabral V on Instagram (opens in a new tab)">Instagram<i aria-hidden="true">&#8599;</i></a><a href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="Cabral V on YouTube (opens in a new tab)">YouTube<i aria-hidden="true">&#8599;</i></a><a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Cabral V on Facebook (opens in a new tab)">Facebook<i aria-hidden="true">&#8599;</i></a></span></div><small>&copy; 2026 Cabral V</small><small>Designed by <a href="https://www.mercystech.com/" target="_blank" rel="noopener">Mercys Global</a></small></div>');},0);});
  var vT=null;sc.addEventListener('scroll',function(){var z=$('.vcenter');if(!z)return;var b=z.getBoundingClientRect(),o=sc.getBoundingClientRect(),t=b.top-o.top,e=b.bottom-o.top,S=o.height;if(t<S*.45&&e>S*.55)site.classList.add('navhide');},{passive:true});
  window.addEventListener('resize',fhSet);var _rf=render;render=function(t){_rf(t);fhSet();};setTimeout(fhSet,300);
  function bsGo(t){var w=t.parentNode;bsLast=t.dataset.id;if(t.classList.contains('on'))return;w.querySelectorAll('.bst').forEach(function(x){x.classList.toggle('on',x===t);});}
