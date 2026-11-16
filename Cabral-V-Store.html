@@ -2557,6 +2557,10 @@ body{color:var(--fg)}
 .socx a i{font-style:normal;color:var(--gold);font-size:11px;transition:transform .25s ease}
 .socx a:hover{background-size:100% 1px}.socx a:hover i{transform:translate(2px,-2px)}
 .msoc .socx{gap:22px}
+/* phone: the brand panel holds still and Drop 01 slides up over it (curtain), instead of both scrolling away together */
+.tiny .homep .hstage{--hx:1;height:calc(290dvh - 132px);margin-bottom:calc(-100dvh + 66px)}
+.tiny .homep .hstage~*{position:relative;z-index:2}
+.tiny .homep .hstage~section.ni{background-color:var(--bg);margin-top:0}
 </style>
 
 <div id="app">
@@ -3470,7 +3474,7 @@ function lookbook(){
   vh=sc.clientHeight;var y=sc.scrollTop,top=sc.getBoundingClientRect().top;
   hero=$('.hstage');
   if(!hero){stks=null;lb=null;mq=null;return;}
-  heroH=Math.max(1,hero.offsetHeight-$('.hsticky').offsetHeight);
+  var hst=$('.hsticky').offsetHeight;heroH=Math.max(1,hero.offsetHeight-hst-(getComputedStyle(hero).getPropertyValue('--hx').trim()==='1'?hst:0));
   hl=$('.hp.l');hr=$('.hp.r');tag=$('.htag');hlogo=$('.hlogo');words=document.querySelectorAll('.hstate h1 span');
   var w=$('#stkwrap');stks=w?w.querySelectorAll('.stk'):null;
   if(w){stkT=w.getBoundingClientRect().top-top+y;stkH=stks[0].offsetHeight;}
