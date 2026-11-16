@@ -2349,6 +2349,188 @@ body{color:var(--fg)}
 .addpill button{padding:7px 12px;border:0;border-radius:999px;background:var(--ink);color:#0D0C0B;font-family:var(--dsp);font-stretch:125%;font-weight:600;font-size:11.5px;cursor:pointer}
 @keyframes addpill{from{opacity:0;transform:translate(-50%,14px)}}
 .still .addpill{animation:none}
+
+/* ===== Nov 16 round ===== */
+/* 1. login: the form uses the right half instead of sitting as a narrow strip in the middle */
+@container site (min-width:1001px){
+ .authpane{width:min(600px,calc(100% - 2*clamp(48px,6vw,120px)));max-width:none;gap:20px}
+ .authpane h1{font-size:clamp(34px,2.7vw,48px)}
+ .authpane>div>p.muted{font-size:16px}
+ .authpane .form input,.authpane .pw input{min-height:52px;font-size:16px}
+ .authpane .btn{min-height:56px}
+}
+
+/* 2. stamp sits in the empty sky of the climb graph, fully inside the pass */
+.kxprof .kx2stamp,.kx2done .kxprof .kx2stamp,.kx2bad .kxprof .kx2stamp{left:31%;top:26%;font-size:clamp(14px,6.2cqw,26px);padding:.3em .7em;border-width:3px;white-space:nowrap}
+
+/* 4. wishlist rows: size + move to bag, in the bag's pass */
+.kxwact{display:grid;justify-items:end;gap:8px}
+.kxwsz{display:flex;gap:4px}
+.kxwsz button{width:32px;height:30px;padding:0;border:1px solid var(--line);background:none;color:var(--ink);font-size:11.5px;font-weight:600;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.kxwsz button:hover:not([disabled]){border-color:var(--ink)}
+.kxwsz button[aria-pressed=true]{background:var(--ink);color:#0D0C0B;border-color:var(--ink)}
+.kxwsz button[disabled]{opacity:.32;text-decoration:line-through;cursor:not-allowed}
+.kxwsz.need button:not([disabled]){border-color:var(--gold)}
+.kxwhint{color:var(--gold)!important;font-weight:600}
+.kxwgo{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:0 16px;border:1px solid var(--ink);background:none;color:var(--ink);font-family:var(--dsp);font-stretch:125%;font-weight:600;font-size:11.5px;letter-spacing:.01em;cursor:pointer;transition:background .2s,color .2s}
+.kxwgo:hover{background:var(--ink);color:#0D0C0B}
+.kxwsold{font-size:12px;color:var(--mute)}
+.kxwish .kx2stub .kxgo{text-align:center}
+@container site (max-width:1000px){
+ .kxwrow .kxwact{grid-column:2;justify-self:start;justify-items:start}
+}
+@container site (max-width:760px){
+ .kxwrow .kxwact{grid-column:2/4;grid-row:2;justify-self:start;justify-items:start}
+ .kxwsz button{width:36px;height:34px}
+}
+
+/* 5. account menu: delivery address */
+.upop>a.upaddr{display:grid;gap:3px;min-height:0;padding:10px 10px 12px;margin:2px 0 4px;border-bottom:1px solid var(--hair);line-height:1.4}
+.upaddr small{font-size:11px;color:var(--gold);letter-spacing:.02em}
+.upaddr span{font-size:12.5px;color:var(--mute)}
+.upaddr em{font-style:normal;font-size:12px;text-decoration:underline;text-underline-offset:3px}
+
+/* 6. Cabral V header icons */
+.ico svg.hic{stroke-linecap:round;stroke-linejoin:round}
+.ico svg.hic .hib{stroke-width:2.6}
+.ico svg.hic .hif{stroke-width:1;opacity:.55}
+@container site (max-width:760px){
+ .kxprof .kx2stamp,.kx2done .kxprof .kx2stamp,.kx2bad .kxprof .kx2stamp{top:8%;left:30%;font-size:13px;border-width:2px}
+}
+
+/* Nov 16: barcodes removed, so the tear-off stub shrinks to fit its one line */
+.kx2pass.kx2v{--n:56px!important}
+.kx2pass.kx2v.kxmini{--n:68px!important}
+.kx2pass.kx2v.kxlogin{--n:48px!important}
+.kx2v .kx2stub{padding-block:10px!important;height:var(--n);min-height:0}
+@container site (max-width:760px){
+ .kx2ckin .kx2v .kx2hold{display:block}
+ .kx2ckin .kx2pass.kx2v{--n:44px!important}
+}
+
+/* Nov 16: order actions */
+.pill.ocx{background:none;border:1px solid rgba(214,108,94,.6);color:#e3a197}
+.otlx li.done:last-child:before,.otlx li.now:before{border-color:var(--gold)}
+.acts2 .onote{font-size:13px;line-height:1.5;margin:2px 0 0}
+.acts2 .ohelp{justify-self:start;font-size:13px}
+.ocxl{font-size:12.5px}
+.ocardx .othumbs{opacity:.55}
+
+/* pop-ups scroll without showing a scroll bar */
+.modal,.drawer,.sxb,.invscroll,.invtw{scrollbar-width:none;-ms-overflow-style:none}
+.modal::-webkit-scrollbar,.drawer::-webkit-scrollbar,.sxb::-webkit-scrollbar,.invscroll::-webkit-scrollbar,.invtw::-webkit-scrollbar{display:none}
+
+/* side sheets (track, cancel): header, roomy body, pinned footer */
+.drawer.sheetx{width:min(480px,100%);padding:0;gap:0;display:flex;flex-direction:column;overflow:hidden}
+.sxh{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 28px 18px;border-bottom:1px solid var(--line)}
+.sxh>span{display:grid;gap:4px}.sxh small{font-size:11px;letter-spacing:.06em;color:var(--gold)}
+.sxh b{font-family:var(--dsp);font-stretch:125%;font-size:20px;font-weight:600}
+.sxb{flex:1;overflow:auto;padding:26px 28px 32px;display:grid;gap:30px;align-content:start}
+.sxf{display:flex;gap:10px;padding:16px 28px 22px;border-top:1px solid var(--line);background:var(--paper)}
+.sxf .btn{flex:1;min-height:52px}
+.sxk{margin:0 0 12px;font-family:var(--dsp);font-stretch:125%;font-weight:500;font-size:11px;letter-spacing:.06em;color:var(--gold)}
+/* track */
+.trkhero{display:grid;gap:6px}
+.trkhero>small{font-size:12px;color:var(--mute)}
+.trkhero>b{font-family:var(--dsp);font-stretch:125%;font-size:34px;font-weight:600;line-height:1.05}
+.trkbar{position:relative;height:3px;margin:18px 0 8px;background:var(--line)}
+.trkbar i{position:absolute;left:0;top:0;bottom:0;width:var(--p);background:var(--gold)}
+.trkbar i:after{content:"";position:absolute;right:-6px;top:50%;width:11px;height:11px;border-radius:50%;background:var(--gold);transform:translateY(-50%);box-shadow:0 0 0 5px rgba(165,134,92,.2)}
+.trkst{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));font-size:11.5px;color:var(--mute)}
+.trkst li:nth-child(2){text-align:center;transform:translateX(-12%)}.trkst li:nth-child(3){text-align:center;transform:translateX(12%)}.trkst li:last-child{text-align:right}
+.trkst li.on{color:var(--ink)}
+.trkawb{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr) auto;gap:16px;align-items:center;padding:18px 0;border-block:1px solid var(--line)}
+.trkawb>span{display:grid;gap:4px;min-width:0}.trkawb small{font-size:11px;color:var(--mute)}.trkawb b{font-size:14px;font-weight:600;overflow-wrap:anywhere}
+.trkcp{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 12px;border:1px solid var(--line);background:none;color:var(--ink);font-size:12.5px;cursor:pointer}
+.trkcp:hover{border-color:var(--ink)}.trkcp svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6}
+.trkup{list-style:none;margin:0;padding:0;display:grid}
+.trkup li{position:relative;display:flex;justify-content:space-between;gap:16px;padding:0 0 20px 24px;color:var(--mute)}
+.trkup li:before{content:"";position:absolute;left:0;top:5px;width:9px;height:9px;border-radius:50%;background:var(--line)}
+.trkup li:after{content:"";position:absolute;left:4px;top:17px;bottom:2px;width:1px;background:var(--line)}
+.trkup li:last-child{padding-bottom:0}.trkup li:last-child:after{display:none}
+.trkup li.now{color:var(--ink)}.trkup li.now:before{background:var(--gold);box-shadow:0 0 0 4px rgba(165,134,92,.2)}
+.trkup span{display:grid;gap:3px}.trkup b{font-size:14px;font-weight:600}.trkup small{font-size:12.5px;color:var(--mute)}
+.trkup time{font-size:12px;white-space:nowrap;color:var(--mute)}
+.trkto p{margin:0 0 6px;font-size:14px;line-height:1.55}.trkto .muted{font-size:12.5px}
+/* cancel */
+.cxit{display:grid;gap:12px}
+.cxit>span{display:grid;grid-template-columns:52px minmax(0,1fr);gap:14px;align-items:center}
+.cxit .pimg{width:52px}.cxit>span>span{display:grid;gap:3px}.cxit b{font-size:14px}.cxit small{font-size:12.5px;color:var(--mute)}
+.cxwhy{border:0;padding:0;margin:0;min-width:0}
+.cxpills{display:flex;flex-wrap:wrap;gap:8px}
+.cxpill{position:relative;cursor:pointer}
+.cxpill input{position:absolute;inset:0;opacity:0;margin:0;cursor:pointer}
+.cxpill span{display:inline-flex;align-items:center;min-height:40px;padding:0 16px;border:1px solid var(--line);border-radius:999px;font-size:13px;transition:border-color .2s,background .2s,color .2s}
+.cxpill:hover span{border-color:var(--ink)}
+.cxpill input:checked+span{background:var(--ink);color:#0D0C0B;border-color:var(--ink)}
+.cxpill input:focus-visible+span{outline:2px solid var(--gold);outline-offset:2px}
+.cxtip{display:grid;gap:8px;padding:14px 16px;border-left:2px solid var(--gold);background:rgba(165,134,92,.08);font-size:13.5px;line-height:1.5}
+.cxtip .link{justify-self:start;font-size:13px}
+.cxother{display:grid;gap:0}
+.cxother textarea{width:100%;background:none;color:inherit;border:1px solid var(--line);padding:12px;font:inherit;font-size:14px;resize:vertical}
+.cxother textarea:focus{border-color:var(--ink);outline:none}
+.cxref{display:grid;gap:6px;padding:16px;background:rgba(244,241,234,.04);font-size:14px;line-height:1.5}
+.cxref small{font-size:11px;letter-spacing:.06em;color:var(--gold)}
+.cxerr{margin:-14px 0 0;color:#e3a197;font-size:13px}
+/* invoice viewer */
+.invv{position:absolute;inset:0;z-index:21;display:flex;flex-direction:column;pointer-events:none}
+.invv>*{pointer-events:auto}
+.invbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px max(20px,3vw);background:var(--paper);border-bottom:1px solid var(--line)}
+.invbt{display:grid;gap:2px}.invbt small{font-size:11px;letter-spacing:.06em;color:var(--gold)}.invbt b{font-family:var(--dsp);font-stretch:125%;font-size:16px;font-weight:600}
+.invacts{display:flex;align-items:center;gap:10px}.invacts .btn{min-height:44px;padding-inline:20px}
+.invscroll{flex:1;overflow:auto;padding:clamp(20px,4vh,48px) 16px clamp(28px,6vh,64px)}
+.inv{width:min(780px,100%);margin:0 auto;background:#f7f4ee;color:#16130f;padding:clamp(22px,4.5vw,56px);display:grid;gap:clamp(22px,3.4vh,34px);font-size:13.5px;line-height:1.5;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.invh{display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+.invlogo{display:flex;align-items:center;gap:12px}.invlogo svg{width:40px;height:auto;color:#16130f}.invlogo b{font-family:var(--dsp);font-stretch:125%;font-size:20px}
+.invt{display:grid;justify-items:end;gap:4px;text-align:right}
+.invt small{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8a6d45}
+.invt b{font-family:var(--dsp);font-stretch:125%;font-size:18px}
+.invpaid{font-style:normal;font-size:11.5px;font-weight:600;padding:4px 10px;border:1px solid #16130f;margin-top:4px}
+.invmeta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;padding-block:22px;border-block:1px solid #ddd5c6}
+.invmeta>div{display:grid;gap:2px;align-content:start}
+.invmeta small,.invmeta dt,.invwords small{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#8a6d45}
+.invmeta small{margin-bottom:6px}.invmeta span{color:#5a5248}
+.invmeta dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 14px;align-content:start}
+.invmeta dt{align-self:center}.invmeta dd{margin:0;text-align:right;font-weight:600}
+.invtw{overflow-x:auto}
+.invtb{width:100%;border-collapse:collapse;min-width:460px}
+.invtb th{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;text-align:left;color:#8a6d45;font-weight:600;padding:0 0 12px;border-bottom:1px solid #16130f}
+.invtb td{padding:16px 0;border-bottom:1px solid #ddd5c6;vertical-align:top}
+.invtb th+th,.invtb td+td{padding-left:18px}
+.invtb td b{font-size:14.5px}.invtb td small{display:block;color:#7a7266;margin-top:3px}
+.invtb th:nth-child(n+2),.invtb td:nth-child(n+2){text-align:right;white-space:nowrap}
+.invend{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,300px);gap:28px;align-items:end}
+.invwords{margin:0;display:grid;gap:4px;font-weight:600;color:#16130f}
+.invsum{display:grid;gap:8px}
+.invsum div{display:flex;justify-content:space-between;gap:12px;color:#5a5248}
+.invgt{border-top:1px solid #16130f;padding-top:12px;margin-top:4px;color:#16130f!important;font-family:var(--dsp);font-stretch:125%;font-size:18px;font-weight:600}
+.invfoot{display:grid;gap:4px;padding-top:20px;border-top:1px solid #ddd5c6;font-size:12px;color:#7a7266}
+.invfoot b{color:#16130f;font-size:13.5px}
+/* phone (overlays live outside the site container, so use the .tiny class) */
+.tiny .sxh{padding:18px 20px 14px}
+.tiny .sxb{padding:22px 20px 28px;gap:26px}
+.tiny .sxf{padding:14px 20px 18px}
+.tiny .trkawb{grid-template-columns:minmax(0,1fr) auto}
+.tiny .trkawb>span:first-child{grid-column:1/3}
+.tiny .invbar{flex-wrap:wrap;padding:12px 16px}
+.tiny .invacts{flex:1 1 100%;order:2}
+.tiny .invacts .btn{flex:1;padding-inline:10px;min-height:42px;font-size:12px}
+.tiny .invbar>.invbt{flex:1}
+.tiny .invscroll{padding:14px 10px 28px}
+.tiny .invmeta{grid-template-columns:minmax(0,1fr);gap:18px}
+.tiny .invend{grid-template-columns:minmax(0,1fr)}
+.tiny .invh{flex-direction:column}
+.tiny .invt{justify-items:start;text-align:left}
+.invtb,.invtb th,.invtb td{border-left:0!important;border-right:0!important;background:none!important}
+.invtb{border:0!important}.invtb th{border-top:0!important}.invtb td{border-top:0!important}
+.ov:has(.invv) .scrim{background:rgba(8,7,6,.94)}
+/* Google sign-in + change password */
+.modal.gsm,.modal.cpm{width:min(440px,calc(100% - 24px));gap:16px}
+.gacct{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center;width:100%;padding:14px 16px;border:1px solid var(--line);background:none;color:inherit;text-align:left;cursor:pointer;font:inherit}
+.gacct:hover{border-color:var(--ink)}.gacct>span:nth-child(2){display:grid;gap:2px}.gacct small{color:var(--mute);font-size:12.5px}
+.modal.gsm>.link{justify-self:center;font-size:13px}
+.cphint{font-size:12.5px;margin:-4px 0 0}.cperr{margin:0;color:#e3a197;font-size:13px}
+.modal.cpm .inline{justify-content:flex-end}
 </style>
 
 <div id="app">
@@ -2424,7 +2606,7 @@ function omoney(o,n){var r=o.r||'in';return REGIONS[r].sym+Number(n).toLocaleStr
 function price(p){return S.region==='in'?p.inr:p.usd;}
 function ph(label,attr){return '<div class="ph" '+(attr||'')+'><span>'+esc(label)+'</span></div>';}
 function ic(n){var d={search:'<circle cx="11" cy="11" r="6.5"/><path d="m16 16 5 5"/>',bag:'<path d="M5 8h14l1 13H4z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/>',user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1-5 4-7 8-7s7 2 8 7"/>',menu:'<path d="M3 6h18M3 12h18M3 18h18"/>',heart:'<path d="M12 20S4 15 4 9.5A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 8 2.5C20 15 12 20 12 20z"/>',close:'<path d="M5 5l14 14M19 5 5 19"/>'}[n];return '<svg viewBox="0 0 24 24" aria-hidden="true">'+d+'</svg>';}
-function wishIco(){return '<a class="ico" href="#wishlist" aria-label="Wishlist, '+S.wish.length+' items">'+ic('heart')+(S.wish.length?'<span class="count">'+S.wish.length+'</span>':'')+'</a>';}
+function wishIco(){return '<a class="ico" href="#wishlist" aria-label="Wishlist, '+S.wish.length+' items">'+hic('heart')+(S.wish.length?'<span class="count">'+S.wish.length+'</span>':'')+'</a>';}
 function bagCount(){return S.bag.reduce(function(a,b){return a+b.qty;},0);}
 var ICON='<svg class="logomark" role="img" aria-label="Cabral V" xmlns="http://www.w3.org/2000/svg" viewBox="60 20 900 970"><g id="Logos_xA0__00000044150443387896940420000016165625330889859770_"> <g id="NEW-GRP_00000111899390367494465750000002771311039641686954_"> <path style="fill:currentColor;" d="M297.67,982.965H178.115c-8.903,0-12.981-11.094-6.197-16.859l202.26-171.945 c3.899-3.317,4.519-9.118,1.365-13.15c-14.401-18.414-47.26-72.562-11.339-149.299c2.531-5.406,9.385-7.155,14.223-3.663 c14.76,10.658,48.315,31.113,103.221,44.499c4.673,1.138,7.777,5.526,7.299,10.312c-1.651,16.527-1.218,55.086,30.429,91.927 c3.393,3.952,3.031,9.888-0.847,13.367L304.058,980.52C302.303,982.094,300.026,982.965,297.67,982.965z"/> <path style="fill:currentColor;" d="M241.814,364.84l57.918-80.26c3.473-4.811,1.482-11.606-4.038-13.785l-174.215-68.751 c-0.497-0.196-1-0.347-1.525-0.454c-5.182-1.046-32.549-5.262-42.047,20.264c-0.362,0.973-0.522,2.016-0.522,3.056v197.474 c0,5.823,5.394,10.146,11.079,8.879l87.178-19.451c5.372-1.2,8.459-6.857,6.556-12.021l-18.819-51.135 c-2.915-7.922,5.59-15.196,12.965-11.091l53.666,29.895C234.039,369.709,239.114,368.58,241.814,364.84z"/> <path style="fill:currentColor;" d="M862.191,984.496H753.604c-3.731,0-6.75-3.031-6.737-6.762L747.4,827.84 c0.012-3.847-3.182-6.934-7.023-6.756c-30.389,1.417-149.879-3.292-177.047-161.363c-0.518-3.01-3.037-5.265-6.084-5.479 c-27.22-1.93-154.497-16.561-236.275-123.421c-1.755-2.292-4.795-3.175-7.523-2.234L160.434,581.4 c-3.645,1.258-5.492,5.311-4.05,8.888l43.738,108.501c1.786,4.427-1.476,9.256-6.25,9.256H81.675 c-3.749,0-6.777-3.062-6.737-6.811l1.832-165.075c0.025-2.108,1.031-4.081,2.721-5.335l180.271-133.772 c0.546-0.405,1.028-0.893,1.43-1.442l83.214-114.186c1.691-2.319,1.724-5.458,0.086-7.814l-5.317-7.642 c-2.319-3.335-1.181-7.952,2.424-9.827l98.637-51.276c1.393-0.724,2.985-0.939,4.522-0.611c8.864,1.905,41.529,7.937,72.344,0.994 c0.693-0.156,0.601-1.181-0.107-1.2c-13.38-0.347-52.101-2.516-73.4-15.865c0,0-61.388-24.768-63.428,37.301 c0,0-38.814-35.874-22.4-69.552c1.126-2.313,0.957-5.044-0.577-7.109l-5.808-7.814c-2.169-2.918-1.638-7.029,1.209-9.29 c18.611-14.769,86.043-65.444,160.311-86.571c0,0,165.02-44.925,301.508,32.613c0,0,137.932,79.094,129.385,248.885 c0,0-7.382-148.422-160.857-209.813c0,0-99.288-36.473-169.088-20.632c-5.728,1.301-7.185,8.775-2.344,12.097 c14.374,9.873,37.7,28.563,49.908,52.721c0.936,1.853-0.69,3.976-2.731,3.583c-9.465-1.81-31.162-5.421-51.208-4.866 c-6.992,0.193-9.155,9.539-2.933,12.732l21.758,11.168c2.148,1.101,3.541,3.264,3.654,5.676 c0.868,18.638,3.617,99.291-11.53,138.193c-1.556,3.998-6.437,5.495-10.005,3.114l0,0c-4.326-2.884-10.146,0.009-10.462,5.197 l-3.35,55.007c-0.288,4.731-5.243,7.695-9.548,5.707l-8.333-3.847c-1.344-0.62-2.85,0.436-2.734,1.908 c0.819,10.155,5.124,41.471,27.398,56.964l38.022,23.213c6.394,3.304,14.371,7.201,19.497,9.75 c21.531,9.394,75.25,31.588,102.788,56.887c0.641,0.589,1.374,1.043,2.194,1.338c9.634,3.439,72.172,23.578,100.634-22.019 c2.292-3.669,7.471-4.136,10.48-1.028c9.459,9.762,24.79,31.861,17.11,67.558c0,0-9.87,56.025-77.995,31.901 c-0.264-0.095-0.525-0.206-0.776-0.331c-3.436-1.715-29.171-14.766-46.094-29.171c-1.445-1.23-3.669-0.325-3.814,1.568 c-1.378,18.132-2.049,85.905,59.919,120.632c1.816,1.019,3.099,2.783,3.43,4.838l42.063,259.982 C869.505,980.778,866.342,984.496,862.191,984.496z"/> </g> </g></svg>';
 var LOGO='<svg class="wordmark" role="img" aria-label="Cabral V" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 830.881 364.78"><g> <g> <path style="fill:currentColor;" d="M183.799,304.233c13.251-31.088-31.394-37.408-75.325-27.113 c-48.925,11.212-89.187,39.65-89.187,59.934c0,33.534,162.576-6.218,181.024-11.008c7.033-1.835,17.43-4.791,17.43-4.791 s0,3.874-4.995,5.402l-11.926,3.568c-24.36,7.441-193.459,50.454-193.459,8.766c0-21.609,38.733-55.143,98.055-69.108 c62.991-14.779,89.799,3.364,89.799,19.57C195.215,299.035,186.857,304.233,183.799,304.233z"/> <path style="fill:currentColor;" d="M295.965,324.635l-15.846,4.364l10.091-12.125c1.425-1.736,0-3.064-2.857-2.248l-17.63,4.897 c-1.425-1.84-5.201-5.097-15.597-5.097c-9.884,0-16.102,0.92-41.485,8.051l-6.218,1.833c-0.422,0.118-0.809,0.263-1.162,0.415 c-3.832,1.674-3.832,5.091-3.832,5.091l6.239-1.639l5.381-1.418c10.465-2.767,15.673-4.765,15.991-4.883 c-8.244,4.89-10.285,10.389-10.285,12.934c0,2.144,1.736,2.857,6.322,1.632l49.944-13.757l-9.884,12.028 c-1.736,2.137-0.311,3.057,2.85,2.137l35.267-10.195c0.56-0.159,1.065-0.353,1.508-0.574c3.486-1.694,3.486-4.828,3.486-4.828 L295.965,324.635z M237.818,328.287c-4.586,1.121-4.994,0.816-4.482-0.512c1.321-3.666,9.683-9.067,20.791-9.067 c6.834,0,8.763,1.224,10.091,2.137C264.219,320.845,257.088,323.397,237.818,328.287z"/> <path style="fill:currentColor;" d="M385.963,324.877c-0.007,0-0.007,0-0.007,0l-16.24,4.634c8.355-4.89,12.332-11.315,12.332-13.764 c0-2.241-2.04-3.057-4.793-2.241l-53.513,15.292l13.252-16.205c19.269-11.011,39.756-28.544,45.974-50.968 c1.425-5.194,1.12-8.051-1.127-8.051c-2.345,0-6.01,2.649-12.436,9.379c-10.492,11.108-21.911,24.56-43.415,50.449 c-9.586,4.489-16.108,7.242-29.049,10.907c-0.339,0.097-0.657,0.194-0.948,0.318c-0.007,0-0.014,0.007-0.021,0.007h-0.007 c-4.198,1.632-4.025,5.18-4.025,5.18c4.371-1.169,8.729-2.421,12.823-3.735l0.007-0.007c0.007,0,0.007,0,0.014-0.007 c6.197-1.978,11.786-4.088,15.901-6.239l-12.228,14.981c-1.736,2.144,0.104,2.857,2.953,2.04l17.637-4.89 c1.529,1.833,5.194,5.097,15.694,5.097c8.362,0,14.068-0.512,31.193-5.305l10.893-3.112l0.035-0.007l6.91-1.978 c4.89-1.425,4.89-5.402,4.89-5.402L385.963,324.877z M367.371,275.894c6.419-7.746,10.091-11.924,10.091-11.924 c0.816-0.913,1.12-0.609,0.712,0.512c-5.506,14.462-17.423,28.738-34.437,39.839C344.222,303.747,359.749,285.232,367.371,275.894 z M367.572,322.885c-1.425,3.77-11.82,9.891-22.831,9.891c-6.93,0-8.971-1.127-10.499-2.345l28.745-8.058 C367.572,321.156,367.98,321.557,367.572,322.885z"/> <path style="fill:currentColor;" d="M470.928,326.555l-9.173,2.65c-18.042,5.198-20.589-2.65-16.716-8.053 c-9.173,1.019-23.851,5.402-43.217,15.493c-2.956,1.529-4.689,0.408-2.854-1.834l9.988-12.13l-26.501,7.135 c0,0,0-4.077,4.994-5.504l33.738-9.581c3.262-0.917,4.179,0.51,2.752,2.242l-7.747,9.072c8.562-4.893,26.399-10.702,40.975-11.212 c0,0,2.548,3.364,0.815,4.485c-7.441,4.994-4.383,8.154,6.727,4.994l11.11-3.16C475.821,321.153,475.821,325.128,470.928,326.555z "/> <path style="fill:currentColor;" d="M554.435,324.642l-15.825,4.357l10.091-12.125c1.425-1.736,0-3.064-2.857-2.248l-17.63,4.897 c-1.432-1.84-5.201-5.097-15.597-5.097c-9.247,0-15.285,0.802-36.796,6.744c-0.747,0.207-1.522,0.422-2.31,0.643 c-0.021,0-0.035,0.007-0.055,0.014c-0.754,0.208-1.529,0.429-2.324,0.65l-0.871,0.256l-5.346,1.577 c-4.489,1.287-4.945,4.71-4.987,5.388c-0.007,0.076-0.007,0.118-0.007,0.118l11.62-3.057c10.465-2.767,15.673-4.765,15.991-4.883 c-8.244,4.89-10.285,10.389-10.285,12.934c0,2.144,1.736,2.857,6.322,1.632l49.944-13.757l-9.891,12.028 c-1.729,2.137-0.304,3.057,2.857,2.137l35.267-10.195c0.567-0.159,1.065-0.353,1.508-0.574c3.486-1.701,3.486-4.828,3.486-4.828 L554.435,324.642z M496.309,328.287c-4.586,1.121-4.994,0.816-4.482-0.512c1.321-3.666,9.683-9.067,20.791-9.067 c6.827,0,8.763,1.224,10.091,2.137C522.709,320.845,515.571,323.397,496.309,328.287z"/> <path style="fill:currentColor;" d="M640.331,253.575c-2.345,0-6.01,2.649-12.436,9.379c-10.499,11.108-21.911,24.56-43.422,50.449 c-9.579,4.489-16.102,7.242-29.049,10.907c-5.194,1.432-4.994,5.506-4.994,5.506c11.011-2.953,21.918-6.419,28.745-9.987 l-12.228,14.981c-1.736,2.144,0.097,2.857,2.953,2.04l35.371-10.195c4.89-1.425,4.89-5.402,4.89-5.402l-28.129,7.65l13.453-16.309 c19.262-11.011,39.749-28.544,45.967-50.968C642.883,256.431,642.572,253.575,640.331,253.575z M636.665,264.482 c-5.506,14.462-17.423,28.738-34.437,39.839c0.484-0.574,16.005-19.09,23.634-28.427c6.419-7.746,10.084-11.924,10.084-11.924 C636.762,263.057,637.073,263.362,636.665,264.482z"/> <path style="fill:currentColor;" d="M823.975,242.809l-171.439,92.55c-4.793,2.649-8.258,2.345-8.258-1.224v-69.103h-6.806v-7.746 h13.432c2.137,0,3.057,0.505,3.057,2.849v66.661c0,1.736,1.632,1.84,3.057,1.024l152.896-85.011 c0.913-0.512,1.833-0.712,7.235-2.241C820.206,239.648,825.912,241.688,823.975,242.809z"/> </g> <path style="fill:currentColor;" d="M371.035,209.853H345.74c-1.884,0-2.747-2.347-1.311-3.567l42.793-36.379 c0.825-0.701,0.956-1.929,0.289-2.782c-3.047-3.896-9.999-15.352-2.399-31.588c0.535-1.143,1.986-1.514,3.009-0.775 c3.123,2.255,10.222,6.583,21.839,9.415c0.989,0.241,1.645,1.169,1.544,2.181c-0.349,3.497-0.258,11.655,6.438,19.449 c0.718,0.836,0.641,2.092-0.179,2.828l-45.376,40.701C372.015,209.669,371.534,209.853,371.035,209.853z"/> <path style="fill:currentColor;" d="M359.217,79.072l12.254-16.981c0.735-1.018,0.314-2.456-0.854-2.917l-36.859-14.546 c-0.105-0.041-0.212-0.073-0.323-0.096c-1.096-0.222-6.887-1.113-8.896,4.288c-0.077,0.206-0.11,0.427-0.11,0.647v41.781 c0,1.232,1.141,2.147,2.344,1.879l18.445-4.115c1.137-0.254,1.789-1.451,1.387-2.543l-3.982-10.819 c-0.617-1.676,1.183-3.215,2.743-2.346l11.354,6.325C357.573,80.103,358.646,79.864,359.217,79.072z"/> <path style="fill:currentColor;" d="M490.474,210.176H467.5c-0.789,0-1.428-0.641-1.426-1.431l0.113-31.714 c0.003-0.814-0.673-1.467-1.486-1.429c-6.429,0.3-31.711-0.696-37.459-34.14c-0.109-0.637-0.643-1.114-1.287-1.159 c-5.759-0.409-32.688-3.504-49.99-26.113c-0.371-0.485-1.015-0.672-1.592-0.473L342,124.892c-0.771,0.266-1.162,1.124-0.857,1.88 l9.254,22.956c0.378,0.937-0.312,1.958-1.322,1.958h-23.739c-0.793,0-1.434-0.648-1.425-1.441l0.387-34.926 c0.005-0.446,0.218-0.863,0.576-1.129l38.141-28.303c0.116-0.086,0.218-0.189,0.303-0.305l17.606-24.159 c0.358-0.491,0.365-1.155,0.018-1.654l-1.125-1.617c-0.491-0.706-0.25-1.682,0.513-2.079l20.869-10.849 c0.295-0.153,0.632-0.199,0.956-0.129c1.875,0.403,8.787,1.68,15.306,0.211c0.147-0.033,0.127-0.25-0.023-0.254 c-2.831-0.073-11.024-0.532-15.53-3.357c0,0-12.989-5.241-13.42,7.892c0,0-8.212-7.59-4.739-14.715 c0.238-0.489,0.202-1.067-0.122-1.504l-1.229-1.653c-0.459-0.617-0.347-1.487,0.256-1.965c3.938-3.125,18.205-13.847,33.918-18.316 c0,0,34.914-9.505,63.792,6.9c0,0,29.183,16.734,27.375,52.658c0,0-1.562-31.403-34.033-44.391c0,0-21.007-7.717-35.775-4.365 c-1.212,0.275-1.52,1.856-0.496,2.56c3.041,2.089,7.977,6.043,10.559,11.154c0.198,0.392-0.146,0.841-0.577,0.758 c-2.002-0.383-6.593-1.147-10.835-1.029c-1.479,0.041-1.937,2.018-0.62,2.694l4.604,2.362c0.454,0.233,0.749,0.691,0.773,1.201 c0.184,3.943,0.765,21.008-2.439,29.238c-0.329,0.846-1.362,1.162-2.117,0.659l0,0c-0.915-0.61-2.147,0.002-2.214,1.099 l-0.709,11.638c-0.061,1.001-1.109,1.628-2.02,1.208l-1.763-0.814c-0.284-0.131-0.603,0.092-0.578,0.404 c0.173,2.148,1.084,8.774,5.797,12.053l8.044,4.912c1.353,0.699,3.04,1.524,4.125,2.063c4.555,1.988,15.921,6.683,21.748,12.036 c0.136,0.125,0.291,0.221,0.464,0.283c2.038,0.728,15.27,4.988,21.292-4.659c0.485-0.777,1.581-0.875,2.218-0.217 c2.002,2.066,5.245,6.741,3.62,14.293c0,0-2.088,11.854-16.502,6.75c-0.056-0.02-0.111-0.043-0.164-0.07 c-0.727-0.363-6.172-3.124-9.752-6.172c-0.306-0.26-0.777-0.069-0.807,0.332c-0.292,3.836-0.433,18.176,12.677,25.523 c0.385,0.216,0.656,0.589,0.726,1.024l8.9,55.006C492.022,209.39,491.353,210.176,490.474,210.176z"/> </g></svg>';
@@ -2447,9 +2629,9 @@ function header(){
    '<a class="logo" href="#home" aria-label="Cabral V home">'+ICON+'</a>'+
    '<nav class="menu" aria-label="Main">'+CATS.map(function(c,i){return '<a href="#shop-'+c[0]+'" data-m="'+i+'" aria-haspopup="true" class="'+(route.id===c[0]?'on':'')+'">'+c[1]+'</a>';}).join('')+'<a href="#shop-drop-01" data-m="'+CATS.length+'" aria-haspopup="true" class="'+(route.id==='drop-01'?'on':'')+'">Drops</a></nav>'+
    '<div class="acts">'+
-   '<a class="ico" href="#search" aria-label="Search">'+ic('search')+'</a>'+wishIco()+
-   '<a class="ico" href="#bag" aria-label="Bag, '+bagCount()+' items">'+ic('bag')+(bagCount()?'<span class="count">'+bagCount()+'</span>':'')+'</a>'+
-   '<button type="button" class="ico" data-act="usermenu" aria-expanded="false" aria-label="Account menu">'+ic('user')+'</button>'+
+   '<a class="ico" href="#search" aria-label="Search">'+hic('search')+'</a>'+wishIco()+
+   '<a class="ico" href="#bag" aria-label="Bag, '+bagCount()+' items">'+hic('bag')+(bagCount()?'<span class="count">'+bagCount()+'</span>':'')+'</a>'+
+   '<button type="button" class="ico" data-act="usermenu" aria-expanded="false" aria-label="Account menu">'+hic('user')+'</button>'+
    '</div></div>'+appHead()+'</header>'+
    (S.notes!==false&&route.note?'<div class="note"><b>NOTE</b><span>'+esc(route.note)+'</span></div>':'');
 }
@@ -2954,8 +3136,6 @@ function bagInner(){
 function openBag(){var o=$('.toast');if(o)o.remove();overlay('<aside class="drawer right bagd" aria-label="Your bag">'+bagInner()+'</aside>');initLot();}
 function refreshBag(){var d=$('.bagd');if(d){d.innerHTML=bagInner();initLot();}render(false);}
 document.addEventListener('click',function(e){
-  var bag=e.target.closest&&e.target.closest('.headrow a[href="#bag"]');
-  if(bag){e.preventDefault();openBag();return;}
   var t=e.target.closest('[data-act]');if(!t)return;var a=t.dataset.act,id=t.dataset.id;
   if(a==='add'&&S.justAdded){S.justAdded=false;openBag();}
   else if(a==='qadd'){var p=byId(id);S.sel[id]={colour:p.colours[0],size:t.dataset.v||''};if(addToBag(p)){S.justAdded=false;render(false);openBag();}}
@@ -3107,8 +3287,8 @@ function footer(){
  function closeUser(){var u=$('.upop');if(u)u.remove();var b=$('[data-act=usermenu]');if(b)b.setAttribute('aria-expanded',false);}
  window.navClose=function(){hide();closeUser();var r=$('.pop');if(r)r.remove();};
  function userMenu(){
-  var l=[['orders','Orders'],['wishlist','Wishlist'],['my-returns','Returns'],['help','Help']].map(function(x){return '<a href="#'+x[0]+'">'+x[1]+'</a>';}).join('');
-  return '<div class="pop upop">'+(S.user?'<div class="uphead"><b>Sample Customer</b><span class="muted">customer@example.com</span></div><a href="#account">My account</a>'+l+'<button type="button" data-act="logout">Log out</button>':'<div class="upbtns"><a class="btn dark" href="#login">Log in</a><a class="btn" href="#signup">Sign up</a></div>'+l)+'</div>';
+  var l=[['orders','Orders'],['my-returns','Returns'],['help','Help']].map(function(x){return '<a href="#'+x[0]+'">'+x[1]+'</a>';}).join('');
+  return '<div class="pop upop">'+(S.user?'<div class="uphead"><b>Sample Customer</b><span class="muted">customer@example.com</span></div><a href="#account">My account</a>'+upAddr()+l+'<button type="button" data-act="logout">Log out</button>':'<div class="upbtns"><a class="btn dark" href="#login">Log in</a><a class="btn" href="#signup">Sign up</a></div>'+l)+'</div>';
  }
  document.addEventListener('mouseover',function(e){
   var t=e.target;if(!t.closest)return;var m=t.closest('.menu a');
@@ -3643,7 +3823,7 @@ function brandBand(){
  function sticky(t){return '<div class="stickybuy"><div class="stotal"><span class="muted">Total</span><b>'+money(t.total)+'</b></div><button type="button" class="btn dark" data-act="checkout">Checkout</button></div>';}
  function more(){var l=PRODUCTS.filter(function(p){return !S.bag.some(function(b){return b.id===p.id;})&&p.state==='in';}).slice(0,4);return l.length?'<section class="wrap sec"><div class="sechead"><h2>Complete the look</h2></div><div class="grid">'+l.map(card).join('')+'</div></section>':'';}
  function count(){var n=bagCount();return n+(n>1?' items':' item');}
- function bars(seed){var x=0,h='';for(var k=0;k<54;k++){var w=1+((k*7+seed*3)%4);if(k%2===0)h+='<rect x="'+x+'" y="0" width="'+w+'" height="40"/>';x+=w+1.2;}return '<svg class="kxbar" viewBox="0 0 '+x.toFixed(1)+' 40" preserveAspectRatio="none" aria-hidden="true">'+h+'</svg>';}
+ function bars(){return '';} /* barcodes removed Nov 16: decoration with no job */
  function nextNo(){return 'ORD-'+(1061+S.orders.length-3);}
  function arrive(i){var s=REGIONS[S.region].ship[i][0],m=/(\d+) to (\d+)/.exec(s);if(!m)return s;var M3=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],d0=Date.now(),f=function(n){var d=new Date(d0+n*864e5);return d.getDate()+' '+M3[d.getMonth()];};return f(+m[1])+' to '+f(+m[2]);}
  function ck(){
@@ -3714,12 +3894,12 @@ function brandBand(){
  }
  function okPage(){
   var o=order();
-  return '<section class="kx kxok'+F()+'"><div class="wrap kx2okin"><div class="kx2pass kx2v kx2done stamped">'+wm()+'<div class="kx2main">'+passHead('Confirmed',o.no)+route(4,true)+'<div class="kx2f"><div><small>Order</small>'+flap('okno',o.no)+'</div><div><small>Paid with</small>'+flap('okpay',o.pay)+'</div><div><small>Arrives</small>'+flap('okar',arrive(S.ship))+'</div><div><small>Total</small>'+flap('oktot',omoney(o,o.total))+'</div></div></div><div class="kx2stub">'+bars(9)+'<span class="kx2hold">Show this at the door</span></div><span class="kx2stamp" aria-hidden="true">Confirmed</span></div>'+
+  return '<section class="kx kxok'+F()+'"><div class="wrap kx2okin"><div class="kx2pass kx2v kx2done stamped">'+wm()+'<div class="kx2main">'+passHead('Confirmed',o.no)+route(4,true).replace('<div class="kxprof">','<div class="kxprof"><span class="kx2stamp" aria-hidden="true">Confirmed</span>')+'<div class="kx2f"><div><small>Order</small>'+flap('okno',o.no)+'</div><div><small>Paid with</small>'+flap('okpay',o.pay)+'</div><div><small>Arrives</small>'+flap('okar',arrive(S.ship))+'</div><div><small>Total</small>'+flap('oktot',omoney(o,o.total))+'</div></div></div><div class="kx2stub">'+bars(9)+'<span class="kx2hold">Quote '+o.no+' for any question about this order</span></div></div>'+
   '<div class="kxokin kxenter"><p class="kxk">Order placed</p><h1 class="kxh">Thank you, Sample.</h1><p class="kxsub">Your order <b>'+o.no+'</b> is placed. We sent the details to your email.</p>'+tl()+'<div class="kxbtns"><a class="kxgo" href="#order-'+o.no+'">View order</a><a class="kxghost" href="#shop-all">Continue shopping</a></div></div></div></section>';
  }
  function failPage(){
   var t=totals();
-  return '<section class="kx kxfail'+F()+'"><div class="wrap kx2okin"><div class="kx2pass kx2v kx2bad stamped">'+wm()+'<div class="kx2main">'+passHead('Not paid')+route(3,false,'Camp 03 · Payment')+'<div class="kx2f"><div><small>Items</small>'+flap('flit',count())+'</div><div><small>Total</small>'+flap('fltot',money(t.total))+'</div><div><small>Pay with</small>'+flap('flpay',S.pay||'UPI')+'</div><div><small>Held for</small>'+flap('flheld','15 minutes')+'</div></div></div><div class="kx2stub">'+bars(6)+'<span class="kx2hold">No money was taken</span></div><span class="kx2stamp" aria-hidden="true">Not paid</span></div>'+
+  return '<section class="kx kxfail'+F()+'"><div class="wrap kx2okin"><div class="kx2pass kx2v kx2bad stamped">'+wm()+'<div class="kx2main">'+passHead('Not paid')+route(3,false,'Camp 03 · Payment').replace('<div class="kxprof">','<div class="kxprof"><span class="kx2stamp" aria-hidden="true">Not paid</span>')+'<div class="kx2f"><div><small>Items</small>'+flap('flit',count())+'</div><div><small>Total</small>'+flap('fltot',money(t.total))+'</div><div><small>Pay with</small>'+flap('flpay',S.pay||'UPI')+'</div><div><small>Held for</small>'+flap('flheld','15 minutes')+'</div></div></div><div class="kx2stub">'+bars(6)+'<span class="kx2hold">No money was taken</span></div></div>'+
   '<div class="kxokin kxenter"><p class="kxk">Payment</p><h1 class="kxh">Payment did not go through.</h1><p class="kxsub">No money was taken. Your items are still held for you, so you can try again or pick another method.</p><div class="kxbtns kxfailb"><a class="kxgo" href="#checkout" data-act="ckpay">Try again</a><a class="kxghost" href="#help">Get help</a></div></div></div></section>';
  }
  function miniPass(){
@@ -3729,7 +3909,7 @@ function brandBand(){
  }
  function loginPass(){
   var t=totals();
-  return '<div class="kx2pass kx2v kxlogin"><div class="kx2main"><header class="kxmh"><span class="kx2brand">'+goat('kx2g')+'<b>Order pass</b></span><span class="kxmno">'+nextNo()+'</span></header><div class="kxlrow">'+its().slice(0,4).map(function(x){return '<span class="kxth"><img src="'+x.img+'" alt=""><i>'+x.b.qty+'</i></span>';}).join('')+'<span class="kxlt"><b>'+count()+' · '+money(t.sub)+'</b><small>Log in and your pass goes straight to checkout.</small></span></div></div><div class="kx2stub">'+bars(2)+'</div></div>';
+  return '<div class="kx2pass kx2v kxlogin"><div class="kx2main"><header class="kxmh"><span class="kx2brand">'+goat('kx2g')+'<b>Order pass</b></span><span class="kxmno">'+nextNo()+'</span></header><div class="kxlrow">'+its().slice(0,4).map(function(x){return '<span class="kxth"><img src="'+x.img+'" alt=""><i>'+x.b.qty+'</i></span>';}).join('')+'<span class="kxlt"><b>'+count()+' · '+money(t.sub)+'</b><small>Log in and your pass goes straight to checkout.</small></span></div></div><div class="kx2stub"><span class="kx2hold">Items held for 15 minutes</span></div></div>';
  }
 
  /* wire into the site */
@@ -3741,6 +3921,26 @@ function brandBand(){
  var bi0=bagInner;bagInner=function(){if(!S.bag.length)return bi0();var n=bagCount();return '<div class="drawerhead"><b>Your bag ('+n+')</b><button type="button" class="ico" data-act="close" aria-label="Close">'+ic('close')+'</button></div>'+miniPass()+'<div class="bfoot"><p class="muted">Shipping and tax are worked out at checkout.</p><button type="button" class="btn dark full" data-act="checkout">Checkout</button><a class="btn full" href="#bag">View bag</a></div>';};
  var as0=authShell;authShell=function(tab,title,sub,form){var h=as0(tab,title,sub,form);if(S.after==='checkout'&&S.bag.length)h=h.replace(/<div class="authbag">[\s\S]*?<\/span><\/span><\/div>/,loginPass());return h;};
  var ad0=addToBag;addToBag=function(p,go){var sel=S.sel[p.id]||{colour:p.colours[0],size:''},ok=ad0(p,go);if(ok)mem.added={k:p.id+'|'+sel.colour+'|'+sel.size,t:Date.now()};return ok;};
+
+ /* wishlist: the same printed pass as the bag, so both lists feel like one family */
+ S.wsz=S.wsz||{};
+ function wishPage(){
+  var L=S.wish.map(byId).filter(Boolean),val=L.reduce(function(a,p){return a+price(p);},0),need=S.wneed,n=L.length+(L.length>1?' items':' item');S.wneed=null;
+  var rows=L.map(function(p,k){var img=IMGS[(GAL[p.id]||['tee.jpg'])[0]],sold=p.state==='sold'||p.state==='soon',pick=S.wsz[p.id]||'',out=p.out||[],col=(S.sel[p.id]&&S.sel[p.id].colour)||p.colours[0],sz='';
+   if(p.sized&&!sold)sz='<span class="kxwsz'+(need===p.id?' need':'')+'" role="group" aria-label="Size for '+esc(p.name)+'">'+SIZES.map(function(s){var off=out.indexOf(s)>-1;return '<button type="button" data-act="wsz" data-id="'+p.id+'" data-v="'+s+'" aria-pressed="'+(pick===s)+'"'+(off?' disabled aria-label="'+s+', sold out"':'')+'>'+s+'</button>';}).join('')+'</span>';
+   var act=sold?'<span class="kxwsold">'+(p.state==='soon'?'Coming soon':'Sold out')+'</span>':'<button type="button" class="kxwgo" data-act="wmv" data-id="'+p.id+'">Move to bag</button>';
+   return '<li class="kx2row kxwrow" style="--k:'+k+'"><a class="kx2ph" href="#product-'+p.id+'"><img src="'+img+'" alt="'+esc(p.name)+'"></a><span class="kx2nm"><a href="#product-'+p.id+'">'+esc(p.name)+'</a><small>'+esc(col)+' · '+esc(catName(p.cat))+'</small>'+(need===p.id?'<small class="kxwhint" role="alert">Pick a size first</small>':'')+'<span class="kx2lk"><button type="button" class="kxlink" data-act="wish" data-id="'+p.id+'">Remove</button></span></span><span class="kxwact">'+sz+act+'</span><b class="kx2pr">'+money(price(p))+'</b></li>';}).join('');
+  var head='<header class="kx2hd"><span class="kx2brand">'+goat('kx2g')+'<b>Cabral V</b></span><span class="kx2t"><small>Wishlist</small><b>Saved pieces</b></span><span class="kx2no"><small>Saved</small><b>'+n+'</b></span></header>';
+  var stub='<div class="kx2stub"><div class="kx2lines"><div class="kxl"><span>Saved</span><span>'+n+'</span></div><div class="kxl"><span>In your bag</span><span>'+bagCount()+(bagCount()===1?' item':' items')+'</span></div></div><div class="kx2big"><small>Saved value</small>'+flap('wishval',money(val))+'</div>'+bars(7)+(S.bag.length?'<a class="kxgo" href="#bag">View bag</a>':'<a class="kxgo" href="#shop-all">Continue shopping</a>')+trustList()+'</div>';
+  return '<section class="kx kxbag kxwish'+F()+'"><div class="wrap kx2in"><div class="kx2top"><p class="kxk">Your wishlist · '+n+'</p><h1 class="kxh">Saved for the next drop.</h1></div>'+
+  '<div class="kx2pass" data-tilt>'+wm()+'<div class="kx2main">'+head+'<ol class="kx2rows">'+rows+'</ol><footer class="kx2ft"><span class="kx2hold">Sizes go fast. Move a piece to your bag to hold it for 15 minutes.</span></footer></div>'+stub+'<span class="kx2shine" aria-hidden="true"></span></div></div></section>'+more();
+ }
+ var w0=V.wishlist;V.wishlist=function(){return S.wish.length?wishPage():w0();};
+ document.addEventListener('click',function(e){var t=e.target.closest&&e.target.closest('[data-act="wsz"],[data-act="wmv"]');if(!t)return;var id=t.dataset.id,p=byId(id);if(!p)return;
+  if(t.dataset.act==='wsz'){S.wsz[id]=t.dataset.v;render(false);var b=document.querySelector('[data-act="wsz"][data-id="'+id+'"][data-v="'+t.dataset.v+'"]');if(b)b.focus({preventScroll:true});return;}
+  if(p.sized&&!S.wsz[id]){S.wneed=id;render(false);var f=document.querySelector('[data-act="wsz"][data-id="'+id+'"]:not([disabled])');if(f)f.focus({preventScroll:true});return;}
+  var keep=S.sel[id];S.sel[id]={colour:(keep&&keep.colour)||p.colours[0],size:S.wsz[id]||''};
+  if(addToBag(p)){S.wish.splice(S.wish.indexOf(id),1);delete S.wsz[id];render(false);toast('Moved to your bag. Held for 15 minutes.');}});
 
  /* motion */
  function animClimb(box){
@@ -3795,6 +3995,156 @@ function brandBand(){
   if(t.closest('[data-act="openbag"]')){var x=document.querySelector('.addpill');if(x)x.remove();openBag();}});
  window.addEventListener('hashchange',function(){var x=document.querySelector('.addpill');if(x)x.remove();});
  var r1=render;render=function(t){r1(t);paint();};
+})();
+
+/* ===== Nov 16: Cabral V header icons + account menu address ===== */
+/* own icon set for the header, same meanings: a lens with a summit inside, a cut-stone heart, a bag with a brand tag, a person in a collared jacket */
+function hic(n){var d={
+ search:'<circle cx="10.4" cy="10.4" r="6.6"/><path d="m7.3 12.4 2.1-2.4 1.5 1.4 1.9-2.1"/><path class="hib" d="m15.4 15.4 5.1 5.1"/>',
+ heart:'<path d="M12 20.3 4.2 12.5V8.2L7.4 5h2.3L12 7.3 14.3 5h2.3l3.2 3.2v4.3z"/><path class="hif" d="M12 7.3v13"/>',
+ bag:'<path d="M5.1 8.7h13.8l-1.3 12.1H6.4z"/><path d="M8.7 8.7c0-3.7 1.4-5.5 3.3-5.5s3.3 1.8 3.3 5.5"/><path d="m12 12.4 1.5 1.5-1.5 1.5-1.5-1.5z"/>',
+ user:'<circle cx="12" cy="7.5" r="3.6"/><path d="M4.4 20.8c.7-4.4 3.5-6.7 7.6-6.7s6.9 2.3 7.6 6.7"/><path d="m9.5 14.5 2.5 2.8 2.5-2.8"/>'
+}[n];return '<svg class="hic hic-'+n+'" viewBox="0 0 24 24" aria-hidden="true">'+d+'</svg>';}
+/* account menu: where orders go, in place of the wishlist line */
+function upAddr(){var a=S.addr.filter(function(x){return x.def;})[0]||S.addr[0];
+ if(!a)return '<a class="upaddr" href="#addresses"><small>Deliver to</small><span>Add a delivery address</span></a>';
+ return '<a class="upaddr" href="#addresses"><small>Deliver to · '+esc(a.label)+'</small><span>'+esc(a.name)+'<br>'+esc(a.line)+', '+esc(a.city)+' '+esc(a.pin)+'</span><em>Change</em></a>';}
+
+/* ===== Nov 16: order page buttons do the real thing: track, invoice, cancel with reason, buy again ===== */
+(function(){
+ var M3=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+ function od(o){var d=new Date(o.date);return isNaN(d)?new Date():d;}
+ function fd(d,n,t){var x=new Date(d.getTime()+n*864e5);return x.getDate()+' '+M3[x.getMonth()]+(t?', '+t:'');}
+ function today(){var d=new Date();return d.getDate()+' '+M3[d.getMonth()]+' '+d.getFullYear();}
+ function ord(no){return S.orders.find(function(x){return x.no===no;});}
+ function amt(o,p){return o.r==='intl'?p.usd:p.inr;}
+ function prepaid(o){return o.pay&&o.pay!=='Cash on Delivery';}
+ function awb(o){return 'CVX'+o.no.replace(/\D/g,'')+'48217IN';}
+ function hsn(p){var c=catName(p.cat)||'';return /shirt|tee/i.test(c)?'6109':/hood|sweat/i.test(c)?'6110':/jacket/i.test(c)?'6201':/bottom|pant|trouser/i.test(c)?'6203':/cap/i.test(p.id)?'6505':/bag|tote/i.test(p.id)?'4202':'6117';}
+ function size(p){return p.sized?'M':'';}
+ function close(){return '<button type="button" class="ico" data-act="close" aria-label="Close">'+ic('close')+'</button>';}
+
+ /* order page */
+ V.order=function(){
+  var o=ord(route.id);if(!o)return V.missing();
+  var c=o.cancelled,st=o.status,d=od(o);
+  var when=['Order received','Confirmed by Cabral V','With the delivery partner','Delivered to you'];
+  var tl;
+  if(c){tl='<li class="done"><b>Placed</b><span class="muted">'+o.date+'</span></li>'+(st>=1?'<li class="done"><b>Confirmed</b><span class="muted">Confirmed by Cabral V</span></li>':'')+
+   '<li class="done'+(prepaid(o)?'':' now')+'"><b>Cancelled</b><span class="muted">'+c.date+' · '+esc(c.reason)+'</span></li>'+
+   (prepaid(o)?'<li class="now"><b>Refund started</b><span class="muted">'+omoney(o,o.total)+' back to your '+esc(o.pay)+' in 5 to 7 working days</span></li>':'');}
+  else tl=STATUS.map(function(s,i){return '<li class="'+(i<=st?'done':'')+(i===st?' now':'')+'"><b>'+s+'</b><span class="muted">'+when[i]+'</span></li>';}).join('');
+  var pill=c?'<span class="pill ocx">Cancelled</span>':statusPill(STATUS[st],st===3);
+  var b=[],note='';
+  if(c){b.push('<button type="button" class="btn dark full" data-act="obuy" data-v="'+o.no+'">Buy again</button>');note=prepaid(o)?'Your refund of '+omoney(o,o.total)+' is on its way to your '+esc(o.pay)+'.':'Nothing was charged for this order.';}
+  else{
+   if(st===2)b.push('<button type="button" class="btn dark full" data-act="otrack" data-v="'+o.no+'">Track delivery</button>');
+   if(st===3)b.push('<a class="btn dark full" href="#return-new">Return or exchange</a>');
+   b.push('<button type="button" class="btn full" data-act="oinv" data-v="'+o.no+'">Download invoice</button>');
+   if(st<2)b.push('<button type="button" class="btn full" data-act="ocancel" data-v="'+o.no+'">Cancel order</button>');
+   if(st===3)b.push('<button type="button" class="btn full" data-act="obuy" data-v="'+o.no+'">Buy again</button>');
+   note=st<2?'Tracking starts once your order is dispatched.':st===2?'This order has left our warehouse, so it can\'t be cancelled now. You can return it after delivery.':'Returns and exchanges are open for 7 days after delivery.';
+  }
+  b.push('<button type="button" class="link ohelp" data-act="helpbtn">Need help with this order?</button>');
+  return acct('orders','<a href="#orders" class="backl">Back to orders</a><div class="ohead"><h1>'+o.no+'</h1>'+pill+'</div><p class="muted">Placed on '+o.date+'</p>'+
+  '<div class="odetail"><div class="stack"><section class="panel"><h3>Order status</h3><ol class="timeline'+(c?' otlx':'')+'">'+tl+'</ol></section>'+
+  '<section class="panel"><h3>Items</h3>'+o.items.map(function(id){var p=byId(id);return '<a class="oline" href="#product-'+id+'">'+pimg(p)+'<span><b>'+esc(p.name)+'</b><span class="muted">'+esc(p.colours[0])+(p.sized?', M':'')+', Qty 1</span></span><span class="price">'+omoney(o,amt(o,p))+'</span></a>';}).join('')+'</section></div>'+
+  '<aside class="stack"><section class="panel"><h3>Summary</h3><div class="line"><span>Items</span><span>'+omoney(o,o.total)+'</span></div><div class="line"><span>Shipping</span><span>Free</span></div><div class="line total"><span>Total</span><span>'+omoney(o,o.total)+'</span></div><p class="muted">Paid by '+esc(o.pay)+'</p></section>'+
+  '<section class="panel"><h3>Delivery address</h3><p class="muted">Sample Customer<br>[House, street, area]<br>Kochi 682030</p></section>'+
+  '<div class="stack acts2">'+b.join('')+'<p class="muted onote">'+note+'</p></div></aside></div>');
+ };
+ /* orders list: cancelled orders say so */
+ V.orders=function(){if(!S.orders.length)return V['empty-orders']();
+  var f=S.ofilter,anyX=S.orders.some(function(o){return o.cancelled;});if(f==='cx'&&!anyX)f=S.ofilter='all';
+  var list=S.orders.filter(function(o){return f==='all'||(f==='cx'?!!o.cancelled:!o.cancelled&&(f==='active'?o.status<3:o.status===3));});
+  var ch=[['all','All'],['active','In progress'],['done','Delivered']].concat(anyX?[['cx','Cancelled']]:[]);
+  return acct('orders','<h1>Orders</h1><div class="chips fl">'+ch.map(function(x){return '<button type="button" class="chip" data-act="ofilter" data-v="'+x[0]+'" aria-pressed="'+(f===x[0])+'">'+x[1]+'</button>';}).join('')+'</div><div class="stack">'+
+  (list.length?list.map(function(o){var c=o.cancelled;return '<a class="ocard'+(c?' ocardx':'')+'" href="#order-'+o.no+'"><span class="othumbs">'+o.items.slice(0,2).map(function(id){return pimg(byId(id));}).join('')+'</span><span class="omain"><span class="otop"><b>'+o.no+'</b>'+(c?'<span class="pill ocx">Cancelled</span>':statusPill(STATUS[o.status],o.status===3))+'</span><span class="muted">'+o.date+', '+o.items.length+(o.items.length>1?' items':' item')+', '+omoney(o,o.total)+'</span>'+(c?'<span class="muted ocxl">Cancelled on '+c.date+(prepaid(o)?' · refund on its way':'')+'</span>':prog(STATUS,o.status))+'</span>'+CHEV+'</a>';}).join(''):'<p class="muted">No orders here.</p>')+'</div>');};
+
+ /* track delivery: one calm panel from the right */
+ function track(o){
+  var d=od(o),stops=[['Packed',1],['Shipped',1],['Out for delivery',0],['Delivered',0]];
+  var ev=[['Reached delivery hub','Kakkanad, Kochi',fd(d,2,'7:10 am'),1],['In transit','Sorting centre, Ernakulam',fd(d,1,'9:45 pm')],['Picked up by courier','Cabral V warehouse, Kochi',fd(d,1,'10:20 am')],['Packed','Cabral V warehouse, Kochi',fd(d,0,'6:05 pm')]];
+  overlay('<aside class="drawer right sheetx trkd" aria-label="Track delivery"><header class="sxh"><span><small>'+esc(o.no)+'</small><b>Track delivery</b></span>'+close()+'</header><div class="sxb">'+
+  '<section class="trkhero"><small>Arriving by</small><b>'+fd(d,3)+'</b><div class="trkbar" style="--p:58%"><i></i></div><ol class="trkst">'+stops.map(function(s){return '<li class="'+(s[1]?'on':'')+'">'+s[0]+'</li>';}).join('')+'</ol></section>'+
+  '<section class="trkawb"><span><small>Courier</small><b>[Courier partner]</b></span><span><small>Tracking number</small><b class="trkno">'+awb(o)+'</b></span><button type="button" class="trkcp" data-act="ocopy" data-v="'+awb(o)+'" aria-label="Copy tracking number"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="11" height="12" rx="1.5"/><path d="M5 15V5.5A1.5 1.5 0 0 1 6.5 4H15"/></svg>Copy</button></section>'+
+  '<section><h4 class="sxk">Shipment updates</h4><ol class="trkup">'+ev.map(function(x){return '<li class="'+(x[3]?'now':'')+'"><span><b>'+x[0]+'</b><small>'+x[1]+'</small></span><time>'+x[2]+'</time></li>';}).join('')+'</ol></section>'+
+  '<section class="trkto"><h4 class="sxk">Delivering to</h4><p>Sample Customer<br>[House, street, area], Kochi 682030</p><p class="muted">The delivery partner calls +91 90000 00000 before arriving.</p></section>'+
+  '</div><footer class="sxf"><button type="button" class="btn full" data-act="helpbtn">Problem with this delivery?</button></footer></aside>');
+ }
+
+ /* invoice: a full-screen document view, actions always in the top bar */
+ var ONES=['','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Eleven','Twelve','Thirteen','Fourteen','Fifteen','Sixteen','Seventeen','Eighteen','Nineteen'],TENS=['','','Twenty','Thirty','Forty','Fifty','Sixty','Seventy','Eighty','Ninety'];
+ function w2(n){return n<20?ONES[n]:TENS[Math.floor(n/10)]+(n%10?'-'+ONES[n%10]:'');}
+ function w3(n){return (n>=100?ONES[Math.floor(n/100)]+' Hundred'+(n%100?' ':''):'')+(n%100?w2(n%100):'');}
+ function words(n){n=Math.round(n);if(!n)return 'Zero';var cr=Math.floor(n/1e7),lk=Math.floor(n/1e5)%100,th=Math.floor(n/1e3)%100,r=n%1000,o=[];if(cr)o.push(w2(cr)+' Crore');if(lk)o.push(w2(lk)+' Lakh');if(th)o.push(w2(th)+' Thousand');if(r)o.push(w3(r));return o.join(' ');}
+ function invoice(o){
+  var intl=o.r==='intl',rows='',tx=0,tv=0,no='CV/26-27/'+o.no.replace(/\D/g,'');
+  o.items.forEach(function(id){var p=byId(id),P=amt(o,p),r=intl?0:(P<=2500?5:18),base=Math.round(P/(1+r/100)*100)/100;tx+=Math.round((P-base)*100)/100;tv+=base;
+   rows+='<tr><td><b>'+esc(p.name)+'</b><small>'+esc(p.colours[0])+(p.sized?' · Size M':'')+(intl?'':' · HSN '+hsn(p))+'</small></td><td>1</td><td>'+omoney(o,base.toFixed(2))+'</td><td>'+(intl?'—':r+'%')+'</td><td>'+omoney(o,P)+'</td></tr>';});
+  var half=Math.round(tx/2*100)/100,paid=prepaid(o)?'Paid · '+esc(o.pay):'Cash on Delivery';
+  overlay('<div class="invv" role="dialog" aria-label="Invoice '+no+'"><header class="invbar"><span class="invbt"><small>Invoice</small><b>'+no+'</b></span><span class="invacts"><button type="button" class="btn dark" data-act="oinvdl" data-v="'+o.no+'">Download PDF</button><button type="button" class="btn" data-act="oinvmail" data-v="'+o.no+'">Email me a copy</button>'+close()+'</span></header>'+
+  '<div class="invscroll"><article class="inv"><header class="invh"><span class="invlogo">'+ICON+'<b>Cabral V</b></span><span class="invt"><small>Tax invoice</small><b>'+no+'</b><em class="invpaid">'+paid+'</em></span></header>'+
+  '<div class="invmeta"><div><small>Sold by</small><b>Cabral V</b><span>[Registered address]</span><span>GSTIN [to be added]</span></div><div><small>Bill and ship to</small><b>Sample Customer</b><span>[House, street, area]</span><span>Kochi 682030, Kerala</span></div><dl><dt>Invoice date</dt><dd>'+o.date+'</dd><dt>Order</dt><dd>'+o.no+'</dd><dt>Place of supply</dt><dd>'+(intl?'Outside India':'Kerala')+'</dd></dl></div>'+
+  '<div class="invtw"><table class="invtb"><thead><tr><th>Item</th><th>Qty</th><th>Taxable value</th><th>GST</th><th>Amount</th></tr></thead><tbody>'+rows+'</tbody></table></div>'+
+  '<div class="invend"><p class="invwords"><small>Amount in words</small>'+(intl?'US Dollars ':'Rupees ')+words(o.total)+' only</p><div class="invsum"><div><span>Taxable value</span><span>'+omoney(o,tv.toFixed(2))+'</span></div>'+(intl?'<div><span>GST</span><span>Not charged (export)</span></div>':'<div><span>CGST</span><span>'+omoney(o,half.toFixed(2))+'</span></div><div><span>SGST</span><span>'+omoney(o,(tx-half).toFixed(2))+'</span></div>')+'<div><span>Shipping</span><span>Free</span></div><div class="invgt"><span>Total</span><span>'+omoney(o,o.total)+'</span></div></div></div>'+
+  '<footer class="invfoot"><b>Thank you for shopping with Cabral V.</b><span>Prices include GST. Computer-generated invoice, no signature needed. Questions: [support email]</span></footer></article></div></div>');
+ }
+
+ /* cancel: a panel from the right, reasons as pills, actions pinned at the bottom */
+ var WHY=['Ordered by mistake','Found a better price','Delivery is too late','Want another size or colour','Change delivery address','Other reason'];
+ function cancel(o){
+  var refund=prepaid(o)?'<b>'+omoney(o,o.total)+'</b> goes back to your '+esc(o.pay)+' in 5 to 7 working days.':'Cash on Delivery, so nothing was charged. Nothing to refund.';
+  overlay('<aside class="drawer right sheetx cxm" aria-label="Cancel '+o.no+'"><header class="sxh"><span><small>'+o.no+'</small><b>Cancel this order?</b></span>'+close()+'</header><div class="sxb">'+
+  '<div class="cxit">'+o.items.map(function(id){var p=byId(id);return '<span>'+pimg(p)+'<span><b>'+esc(p.name)+'</b><small>'+esc(p.colours[0])+(p.sized?' · M':'')+' · '+omoney(o,amt(o,p))+'</small></span></span>';}).join('')+'</div>'+
+  '<fieldset class="cxwhy"><legend class="sxk">Why are you cancelling?</legend><div class="cxpills">'+WHY.map(function(w,i){return '<label class="cxpill"><input type="radio" name="cxr" value="'+esc(w)+'"'+(i===4?' data-tip="addr"':'')+(i===5?' data-tip="other"':'')+'><span>'+w+'</span></label>';}).join('')+'</div></fieldset>'+
+  '<div class="cxtip" data-for="addr" hidden><span>No need to cancel. Until the order is dispatched we can change the address for you.</span><button type="button" class="link" data-act="helpbtn">Change address instead</button></div>'+
+  '<label class="cxother" data-for="other" hidden for="cxText"><span class="sxk">Tell us a little more</span><textarea id="cxText" rows="3" maxlength="300" placeholder="Your reason"></textarea></label>'+
+  '<div class="cxref"><small>Refund</small><span>'+refund+'</span></div><p class="cxerr" role="alert" hidden></p></div>'+
+  '<footer class="sxf cxbtn"><button type="button" class="btn" data-act="close">Keep my order</button><button type="button" class="btn dark" data-act="ocxgo" data-v="'+o.no+'">Cancel order</button></footer></aside>');
+ }
+ document.addEventListener('change',function(e){var r=e.target;if(!r.matches||!r.matches('.cxm input[name=cxr]'))return;var m=r.closest('.cxm');
+  m.querySelectorAll('[data-for]').forEach(function(x){x.hidden=x.dataset.for!==r.dataset.tip;});var er=m.querySelector('.cxerr');er.hidden=true;
+  if(r.dataset.tip==='other'){var t=m.querySelector('#cxText');if(t)t.focus({preventScroll:true});}});
+
+ document.addEventListener('click',function(e){var t=e.target.closest&&e.target.closest('[data-act]');if(!t)return;var a=t.dataset.act,v=t.dataset.v;
+  if(a==='cancel'){e.preventDefault();e.stopImmediatePropagation();var o0=ord(v);if(o0)cancel(o0);return;}
+  if(!/^o(track|inv|invdl|invmail|cancel|cxgo|buy|copy)$/.test(a))return;
+  e.preventDefault();e.stopImmediatePropagation();var o=ord(v);
+  if(a==='ocopy'){var done=function(){toast('Tracking number copied');};try{navigator.clipboard.writeText(v).then(done,function(){sel();});}catch(x){sel();}
+   function sel(){var n=document.querySelector('.trkno');if(n){var r=document.createRange();r.selectNodeContents(n);var s=getSelection();s.removeAllRanges();s.addRange(r);}toast('Tracking number selected. Press Ctrl+C to copy');}return;}
+  if(!o)return;
+  if(a==='otrack')track(o);
+  else if(a==='oinv')invoice(o);
+  else if(a==='oinvdl')toast('Invoice saved as Cabral-V-Invoice-'+o.no+'.pdf');
+  else if(a==='oinvmail')toast('Invoice sent to customer@example.com');
+  else if(a==='ocancel')cancel(o);
+  else if(a==='ocxgo'){var m=t.closest('.cxm'),r=m.querySelector('input[name=cxr]:checked'),er=m.querySelector('.cxerr');
+   if(!r){er.textContent='Please pick a reason so we can do better.';er.hidden=false;var f=m.querySelector('input[name=cxr]');if(f)f.focus({preventScroll:true});return;}
+   var why=r.value;if(r.dataset.tip==='other'){var tx=(m.querySelector('#cxText').value||'').trim();if(tx.length<3){er.textContent='Please write your reason in a few words.';er.hidden=false;m.querySelector('#cxText').focus({preventScroll:true});return;}why=tx;}
+   o.cancelled={reason:why,date:today()};closeOv();render(false);toast(prepaid(o)?'Order cancelled. Refund started.':'Order cancelled.');}
+  else if(a==='obuy'){o.items.forEach(function(id){var p=byId(id),sz=size(p),b=S.bag.find(function(x){return x.id===id&&x.colour===p.colours[0]&&x.size===sz;});if(b)b.qty++;else S.bag.push({id:id,colour:p.colours[0],size:sz,qty:1});});location.hash='bag';toast(o.items.length>1?'Items added to your bag':'Added to your bag');}
+ },true);
+})();
+
+/* ===== Nov 16: last two placeholder buttons: Google sign-in and change password ===== */
+(function(){
+ function x(){return '<button type="button" class="ico" data-act="close" aria-label="Close">'+ic('close')+'</button>';}
+ function pw(id,lb,ac){return '<label for="'+id+'">'+lb+'<span class="pw"><input id="'+id+'" type="password" autocomplete="'+ac+'"><button type="button" class="link" data-act="pwshow" data-v="'+id+'">Show</button></span></label>';}
+ document.addEventListener('click',function(e){var t=e.target.closest&&e.target.closest('[data-act]');if(!t)return;var a=t.dataset.act,v=t.dataset.v||'';
+  if(a==='toast'&&/^Google sign-in/.test(v)){e.preventDefault();e.stopImmediatePropagation();
+   overlay('<div class="modal gsm" role="dialog" aria-label="Continue with Google"><div class="drawerhead"><h3>Continue with Google</h3>'+x()+'</div><p class="muted">Cabral V gets your name and email from your Google account. We never see your Google password.</p><button type="button" class="gacct" data-act="gdo"><span class="avatar" aria-hidden="true">SC</span><span><b>Sample Customer</b><small>customer@example.com</small></span><span aria-hidden="true">&#8250;</span></button><button type="button" class="link" data-act="close">Use email instead</button></div>');return;}
+  if(a==='gdo'){e.preventDefault();e.stopImmediatePropagation();closeOv();doLogin();return;}
+  if(a==='toast'&&/^Password form/.test(v)){e.preventDefault();e.stopImmediatePropagation();
+   overlay('<div class="modal cpm" role="dialog" aria-label="Change password"><div class="drawerhead"><h3>Change password</h3>'+x()+'</div><form class="form" data-form="cpw" novalidate>'+pw('cpOld','Current password','current-password')+pw('cpNew','New password','new-password')+pw('cpNew2','Type the new password again','new-password')+'<p class="muted cphint">At least 8 characters, with a number.</p><p class="cperr" role="alert" hidden></p><div class="inline"><button type="button" class="btn" data-act="close">Cancel</button><button class="btn dark">Save password</button></div></form></div>');return;}
+ },true);
+ document.addEventListener('submit',function(e){var f=e.target;if(!f.matches||!f.matches('[data-form=cpw]'))return;e.preventDefault();e.stopImmediatePropagation();
+  var o=f.querySelector('#cpOld').value,n=f.querySelector('#cpNew').value,n2=f.querySelector('#cpNew2').value,er=f.querySelector('.cperr'),bad=function(m,id){er.textContent=m;er.hidden=false;f.querySelector('#'+id).focus();};
+  if(!o)return bad('Type your current password.','cpOld');
+  if(n.length<8||!/\d/.test(n))return bad('The new password needs at least 8 characters and a number.','cpNew');
+  if(n===o)return bad('Pick a password different from the current one.','cpNew');
+  if(n!==n2)return bad('The two new passwords don\'t match.','cpNew2');
+  closeOv();toast('Password changed');},true);
 })();
 render();
 </script>
