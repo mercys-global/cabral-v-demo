@@ -2656,6 +2656,14 @@ body{color:var(--fg)}
 .card .heart:hover svg,.ni .heart:hover svg,.heart.bsh:hover svg{stroke:#E23B44!important}
 /* home: brand red on the small kickers, like the wishlist and bag pages */
 .homep .look small,.homep .look .lk,.homep .axh small{color:#E23B44}
+/* scrolling stays, scroll bars are never shown (every page, every box) */
+html,body,#scroll,*{scrollbar-width:none!important;-ms-overflow-style:none}
+html::-webkit-scrollbar,body::-webkit-scrollbar,#scroll::-webkit-scrollbar,*::-webkit-scrollbar{display:none!important;width:0!important;height:0!important}
+/* phone login fills the screen: the photo band takes any spare height, no empty strip at the bottom */
+.tiny .auth{display:flex!important;flex-direction:column;min-height:calc(var(--sh,100dvh) - 67px)}
+.tiny #main:has(>.auth){padding-bottom:0}
+.tiny .auth .authart{flex:1 1 110px;height:auto!important;min-height:110px!important}
+.tiny .auth .authpane{flex:none}
 </style>
 
 <div id="app">
